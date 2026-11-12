@@ -51,6 +51,11 @@
   min-width: 0;
   align-items: start;
 }
+/* A direct child span opts an otherwise intrinsic grid into twelve tracks.
+ * Explicit kos-cols always takes precedence. */
+.kos-grid:not([kos-cols]):has(> [kos-col-span]) {
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+}
 .kos-grid > * { min-width: 0; }
 .kos-grid[kos-cols="1"] { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 .kos-grid[kos-cols="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -142,7 +147,7 @@
 .kos-composition { container-type: inline-size; }
 .kos-composition > .kos-grid + .kos-grid { margin-block-start: var(--kos-gutter); }
 @container (max-width: 48rem) {
-  .kos-composition > .kos-grid[kos-cols] { grid-template-columns: minmax(0, 1fr); }
+  .kos-composition > .kos-grid:is([kos-cols], :has(> [kos-col-span])) { grid-template-columns: minmax(0, 1fr); }
   .kos-composition > .kos-grid > [kos-col-span] {
     grid-column: 1 / -1;
     grid-row: auto;
