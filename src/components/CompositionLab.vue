@@ -5,7 +5,7 @@ import { exportBoth, exportCSS, exportHTML } from '../lib/export';
 
 const batch = ref(0);
 const selected = ref(0);
-const device = ref<'desktop' | 'mobile'>('desktop');
+const previewWidth = ref(960);
 const showCode = ref(false);
 const showContent = ref(true);
 const gap = ref(20);
@@ -81,16 +81,15 @@ async function copy(type: 'html' | 'css' | 'both') {
       </div>
 
       <div class="control-bar">
-        <div class="segmented" role="group" aria-label="Preview device">
-          <button type="button" :aria-pressed="device === 'desktop'" :class="{ active: device === 'desktop' }" @click="device = 'desktop'">Desktop</button>
-          <button type="button" :aria-pressed="device === 'mobile'" :class="{ active: device === 'mobile' }" @click="device = 'mobile'">Mobile</button>
-        </div>
+        <label class="width-label" for="preview-width">Preview width <output for="preview-width">{{ previewWidth }}px</output></label>
+        <input id="preview-width" v-model.number="previewWidth" class="width-slider" type="range" min="320" max="1200" step="10" aria-label="Composition preview width in pixels" />
+        <button type="button" class="width-reset" @click="previewWidth = 960">Reset</button>
         <label class="switch-label"><input v-model="showContent" type="checkbox" /> Sample content</label>
         <label class="gap-label">Gap <input v-model.number="gap" type="range" min="8" max="40" step="4" /> <output>{{ gap }}px</output></label>
       </div>
 
       <div class="preview-stage">
-        <div class="preview-paper" :class="{ 'preview-paper--mobile': device === 'mobile' }">
+        <div class="preview-paper" :style="{ width: previewWidth + 'px' }">
           <div class="preview-mast"><span>格子 / KŌSHI</span><span>STUDY {{ String(selected + 1).padStart(2, '0') }}</span></div>
           <div class="kos-composition" :style="{ '--kos-gutter': gap + 'px' }">
             <div v-for="(row, rowIndex) in active.rows" :key="rowIndex" class="kos-grid" kos-cols="12">
