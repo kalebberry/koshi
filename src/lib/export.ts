@@ -32,7 +32,7 @@ export const exportCSS = `/* Requires Kōshi CSS: src/styles/koshi.css */
 .kos-block blockquote { margin: 0; font: italic 2rem/1.2 Georgia, serif; }
 .kos-block h2 { font: 400 2rem/1.2 Georgia, serif; }
 @container (max-width: 48rem) {
-  .kos-composition > .kos-grid[kos-cols] { grid-template-columns: minmax(0, 1fr); }
+  .kos-composition > .kos-grid:not(.kos-grid--auto) { grid-template-columns: minmax(0, 1fr); }
   .kos-composition > .kos-grid > * { grid-column: 1 / -1; }
 }`;
 
