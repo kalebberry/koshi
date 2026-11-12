@@ -1,0 +1,105 @@
+---
+import SiteLayout from '../../layouts/SiteLayout.astro';
+---
+<SiteLayout title="Documentation" description="Learn Kōshi's standalone CSS grid API, columns, spans, gaps, offsets, Flexbox layouts, and responsive composition behavior.">
+  <div class="shell">
+    <header class="docs-head">
+      <span class="eyebrow">Kōshi / Reference 001</span>
+      <h1 class="display">Documentation.</h1>
+      <p class="lead">The essentials of Kōshi's framework-independent CSS grid. Designed to be understood, copied, and adapted.</p>
+      <div class="actions"><a class="action action-primary" href="/downloads/koshi.css" download="koshi.css">Download koshi.css ↓</a><a class="action action-outline" href="https://github.com/kalebberry/koshi">Source on GitHub ↗</a></div>
+    </header>
+    <div class="docs-layout">
+      <nav class="docs-toc" aria-label="Documentation sections">
+        <span class="eyebrow">ON THIS PAGE</span>
+        <a href="#installation">Installation</a>
+        <a href="#containers">Containers</a>
+        <a href="#columns">Columns & spans</a>
+        <a href="#gaps">Gutters</a>
+        <a href="#offsets">Offsets</a>
+        <a href="#responsive">Responsive compositions</a>
+        <a href="#flex">Flexbox & intrinsic grids</a>
+        <a href="#utilities">Other utilities</a>
+      </nav>
+      <article class="docs-body">
+        <section id="installation">
+          <h2>Installation</h2>
+          <p>Download the standalone CSS file and serve it from your project. Kōshi requires no framework, JavaScript, or build step.</p>
+          <pre><code>{`<link rel="stylesheet" href="/css/koshi.css" />`}</code></pre>
+          <p>For an Astro project, you can instead import the source stylesheet directly from <code>src/styles/koshi.css</code>. The Composition Lab itself uses Vue, but the grid system does not.</p>
+        </section>
+        <section id="containers">
+          <h2>Containers</h2>
+          <p><code>.kos-container</code> centers content and applies a maximum width. Choose a width with the <code>container-type</code> attribute.</p>
+          <pre><code>{`<div class="kos-container">Default width</div>
+<div class="kos-container" container-type="narrow">Narrow</div>
+<div class="kos-container" container-type="wide">Wide</div>
+<div class="kos-container" container-type="full-bleed">Full bleed</div>`}</code></pre>
+          <p>Default maximum widths are 75rem (default), 48rem (narrow), and 90rem (wide). They can be overridden with CSS custom properties.</p>
+        </section>
+        <section id="columns">
+          <h2>Columns & spans</h2>
+          <p>Use <code>kos-cols</code> to define an explicit track count from 1 to 12. Use <code>kos-col-span</code> on children to span tracks. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
+          <pre><code>{`<div class="kos-grid" kos-cols="12">
+  <article kos-col-span="8">Main</article>
+  <aside kos-col-span="4">Aside</aside>
+</div>`}</code></pre>
+          <p>Explicit column counts remain fixed unless you opt into a responsive composition context. Narrow viewports may need an appropriate responsive wrapper.</p>
+        </section>
+        <section id="gaps">
+          <h2>Gutters</h2>
+          <p>Gaps default to 1.5rem. Use the gap utilities or override <code>--kos-gutter</code> for custom spacing.</p>
+          <pre><code>{`<div class="kos-grid kos-gap-4" kos-cols="3">...</div>
+<div class="kos-grid" kos-cols="12" style="--kos-gutter: 2rem">...</div>`}</code></pre>
+          <p>Available utilities are <code>.kos-gap-0</code>, <code>.kos-gap-2</code>, <code>.kos-gap-4</code>, <code>.kos-gap-6</code>, and <code>.kos-gap-8</code>. Native CSS Grid fractional tracks account for gutters automatically.</p>
+        </section>
+        <section id="offsets">
+          <h2>Offsets</h2>
+          <p>Use <code>kos-offset</code> values 1–6 to set a child's starting grid line. Offsets are explicit positions, not additive margins: ensure the offset and span fit within the grid.</p>
+          <pre><code>{`<div class="kos-grid" kos-cols="12">
+  <article kos-col-span="6" kos-offset="3">Shifted content</article>
+</div>`}</code></pre>
+          <p>For example, offset 3 starts on grid line 4; with span 6 it ends at line 10. An offset plus a span that exceeds the grid can create implicit tracks, so choose combinations deliberately.</p>
+        </section>
+        <section id="responsive">
+          <h2>Responsive compositions</h2>
+          <p>Add <code>.kos-composition</code> around one or more fixed grids to opt into container-query responsiveness. Below a 48rem containing width, each direct child stacks into a single column.</p>
+          <pre><code>{`<section class="kos-composition">
+  <div class="kos-grid" kos-cols="12">
+    <div kos-col-span="7">Visual</div>
+    <div kos-col-span="5">Copy</div>
+  </div>
+</section>`}</code></pre>
+          <p>This opt-in behavior leaves other fixed grids unchanged. It responds to the composition container, not just the viewport.</p>
+        </section>
+        <section id="flex">
+          <h2>Flexbox & intrinsic grids</h2>
+          <p>Use <code>.kos-flex-grid</code> for a wrapping Flexbox layout. Its twelve-column span calculations account for gutters; a full-width <code>kos-col-span="12"</code> occupies one row.</p>
+          <pre><code>{`<div class="kos-flex-grid">
+  <div kos-col-span="6">Left</div>
+  <div kos-col-span="6">Right</div>
+</div>`}</code></pre>
+          <p>For an intrinsic CSS Grid layout, omit <code>kos-cols</code>. Kōshi uses auto-fit with a configurable minimum item size.</p>
+          <pre><code>{`<div class="kos-grid" style="--kos-grid-min-item-size: 14rem">
+  <article>One</article>
+  <article>Two</article>
+  <article>Three</article>
+</div>`}</code></pre>
+        </section>
+        <section id="utilities">
+          <h2>Other utilities</h2>
+          <table><thead><tr><th>API</th><th>Purpose</th></tr></thead><tbody>
+            <tr><td><code>kos-row-span="1"–"4"</code></td><td>Span CSS Grid rows</td></tr>
+            <tr><td><code>kos-order="-4"–"4"</code></td><td>Set visual order</td></tr>
+            <tr><td><code>kos-grow="0"–"3"</code></td><td>Flex grow values in a flex grid</td></tr>
+            <tr><td><code>.kos-sidebar-grid</code></td><td>Sidebar plus main content</td></tr>
+            <tr><td><code>.kos-masonry-grid</code></td><td>Multi-column masonry-like flow</td></tr>
+            <tr><td><code>.kos-cq</code></td><td>Named CSS query container</td></tr>
+            <tr><td><code>.kos-flow</code></td><td>Vertical rhythm between children</td></tr>
+          </tbody></table>
+          <p>See the source stylesheet for the complete available selectors. Kōshi is currently an early release; the API may evolve.</p>
+        </section>
+      </article>
+    </div>
+  </div>
+</SiteLayout>
