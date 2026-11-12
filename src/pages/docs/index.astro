@@ -39,7 +39,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
         </section>
         <section id="columns">
           <h2>Columns & spans</h2>
-          <p>Use <code>kos-cols</code> to define an explicit track count from 1 to 12. Use <code>kos-col-span</code> on children to span tracks. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
+          <p>By default, <code>.kos-grid</code> creates an intrinsic auto-fit layout. Adding <code>kos-col-span</code> to a direct child automatically switches the grid to twelve proportional tracks, without needing <code>kos-cols="12"</code>. Use <code>kos-cols</code> only when you want to explicitly choose a fixed track count from 1 to 12. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
           <pre><code>{`<div class="kos-grid" kos-cols="12">
   <article kos-col-span="8">Main</article>
   <aside kos-col-span="4">Aside</aside>
@@ -79,7 +79,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   <div kos-col-span="6">Left</div>
   <div kos-col-span="6">Right</div>
 </div>`}</code></pre>
-          <p>For an intrinsic CSS Grid layout, omit <code>kos-cols</code>. Kōshi uses auto-fit with a configurable minimum item size.</p>
+          <p>For an intrinsic CSS Grid layout, omit <code>kos-cols</code> and child <code>kos-col-span</code> attributes. Kōshi uses auto-fit with a configurable minimum item size.</p>
           <pre><code>{`<div class="kos-grid" style="--kos-grid-min-item-size: 14rem">
   <article>One</article>
   <article>Two</article>
