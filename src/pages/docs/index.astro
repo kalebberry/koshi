@@ -39,7 +39,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
         </section>
         <section id="columns">
           <h2>Columns & spans</h2>
-          <p>Use <code>kos-cols</code> to define an explicit track count from 1 to 12. Use <code>kos-col-span</code> on children to span tracks. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
+          <p><code>.kos-grid</code> defaults to twelve equal tracks; no <code>kos-cols="12"</code> declaration is needed. Optionally use <code>kos-cols</code> to choose another fixed track count from 1 to 12. Use <code>kos-col-span</code> on children to span tracks. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
           <pre><code>{`<div class="kos-grid" kos-cols="12">
   <article kos-col-span="8">Main</article>
   <aside kos-col-span="4">Aside</aside>
@@ -74,12 +74,12 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
         </section>
         <section id="flex">
           <h2>Flexbox & intrinsic grids</h2>
-          <p>Use <code>.kos-flex-grid</code> for a wrapping Flexbox layout. Its twelve-column span calculations account for gutters; a full-width <code>kos-col-span="12"</code> occupies one row.</p>
+          <p>Use <code>.kos-flex-grid</code> for a wrapping Flexbox layout. Its twelve-column span calculations account for gutters; a full-width <code>kos-col-span="12"</code> occupies one row. Wrapped items grow to fill the available space on each row by default; use <code>kos-grow="0"</code> to prevent an item from expanding.</p>
           <pre><code>{`<div class="kos-flex-grid">
   <div kos-col-span="6">Left</div>
   <div kos-col-span="6">Right</div>
 </div>`}</code></pre>
-          <p>For an intrinsic CSS Grid layout, omit <code>kos-cols</code>. Kōshi uses auto-fit with a configurable minimum item size.</p>
+          <p>For an intrinsic CSS Grid layout, add <code>.kos-grid--auto</code>. Kōshi uses auto-fit with a configurable minimum item size. Add <code>.kos-grid--fill</code> to retain empty tracks instead of collapsing them.</p>
           <pre><code>{`<div class="kos-grid" style="--kos-grid-min-item-size: 14rem">
   <article>One</article>
   <article>Two</article>
