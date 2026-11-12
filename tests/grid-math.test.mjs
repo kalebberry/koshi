@@ -38,3 +38,15 @@ test('row combinations exactly fill their available width including gaps', () =>
 test('CSS Grid uses native fractional tracks for 12 columns', () => {
   assert.match(css, /\.kos-grid\[kos-cols="12"\] \{ grid-template-columns: repeat\(12, minmax\(0, 1fr\)\); \}/);
 });
+
+
+test('ordinary grids remain intrinsic while child spans opt into twelve tracks', () => {
+  assert.ok(css.includes('repeat(var(--kos-grid-placement, auto-fit), minmax(min(100%, var(--kos-grid-min-item-size)), 1fr))'));
+  assert.ok(css.includes('.kos-grid:not([kos-cols]):has(> [kos-col-span]) {'));
+  assert.ok(css.includes('grid-template-columns: repeat(12, minmax(0, 1fr));'));
+  assert.ok(css.includes('.kos-grid[kos-cols="6"] { grid-template-columns: repeat(6, minmax(0, 1fr)); }'));
+});
+
+test('span-based compositions stack at narrow container widths', () => {
+  assert.ok(css.includes('.kos-composition > .kos-grid:is([kos-cols], :has(> [kos-col-span])) { grid-template-columns: minmax(0, 1fr); }'));
+});
