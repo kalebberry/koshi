@@ -126,3 +126,18 @@ html, body { max-width: 100%; }
   .docs-twelve span { font-size: 7px; }
   .docs-block--feature strong { overflow-wrap: anywhere; }
 }
+
+/* Documentation studies respond to their own available width, not device labels. */
+.docs-example { container-type: inline-size; }
+.docs-example > .kos-grid { min-width: 0; max-width: 100%; }
+.docs-composition-demo, .docs-composition-demo .kos-composition,
+.docs-composition-demo .kos-grid { min-width: 0; max-width: 100%; }
+@container (max-width: 34rem) {
+  .docs-example > .kos-grid:not([kos-cols]):has(> [kos-col-span]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .docs-example > .kos-grid > [kos-col-span] {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
