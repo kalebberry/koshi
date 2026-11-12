@@ -86,3 +86,19 @@ button:focus-visible, input:focus-visible { outline: 2px solid #252522; outline-
 .width-reset { background: none; border: 0; padding: 9px 3px; font-size: 12px; color: #57554e; text-decoration: underline; text-underline-offset: 4px; }
 .width-reset:hover { color: #24231f; }
 .preview-paper { max-width: none; box-sizing: border-box; }
+
+/* Keep the resizable composition canvas isolated from page-level overflow. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; }
+.lab-shell, .detail, .control-bar, .gallery, .study-card, .export-bar, .preview-stage { min-width: 0; }
+.preview-stage { width: 100%; max-width: 100%; overflow-x: auto; overflow-y: hidden; -webkit-overflow-scrolling: touch; }
+.preview-paper { flex-shrink: 0; }
+.hero h1, .section-heading h2 { overflow-wrap: anywhere; }
+.code-panel { max-width: 100%; }
+@media (max-width: 740px) {
+  .width-slider { width: min(100%, 240px); }
+  .control-bar { gap: 12px; }
+  .export-buttons { max-width: 100%; }
+  .export-buttons .button { white-space: normal; }
+  .card-caption, .card-meta { flex-wrap: wrap; }
+}
