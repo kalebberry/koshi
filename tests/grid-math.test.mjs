@@ -38,3 +38,21 @@ test('row combinations exactly fill their available width including gaps', () =>
 test('CSS Grid uses native fractional tracks for 12 columns', () => {
   assert.match(css, /\.kos-grid\[kos-cols="12"\] \{ grid-template-columns: repeat\(12, minmax\(0, 1fr\)\); \}/);
 });
+
+
+test('default CSS Grid uses twelve tracks without a column attribute', () => {
+  assert.match(css, /\\.kos-grid \\{[\\s\\S]*?grid-template-columns: repeat\\(12, minmax\\(0, 1fr\\)\\);/);
+});
+
+test('intrinsic grid is explicitly opt-in', () => {
+  assert.match(css, /\\.kos-grid\\.kos-grid--auto \\{[\\s\\S]*?repeat\\(var\\(--kos-grid-placement, auto-fit\\)/);
+});
+
+test('flex spans wrap and grow to fill the row', () => {
+  assert.match(css, /\\.kos-flex-grid \\{ display: flex; flex-wrap: wrap; gap: var\\(--kos-gutter\\); \\}/);
+  assert.match(css, /\\.kos-flex-grid > \\* \\{ flex: 1 1 var\\(--kos-grid-min-item-size\\); min-width: 0; \\}/);
+});
+
+test('default grids stack inside a narrow composition container', () => {
+  assert.match(css, /\\.kos-composition > \\.kos-grid:not\\(\\.kos-grid--auto\\) \\{ grid-template-columns: minmax\\(0, 1fr\\); \\}/);
+});
