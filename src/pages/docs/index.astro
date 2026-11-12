@@ -40,7 +40,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
         <section id="columns">
           <h2>Columns & spans</h2>
           <p><code>.kos-grid</code> defaults to twelve equal tracks; no <code>kos-cols="12"</code> declaration is needed. Optionally use <code>kos-cols</code> to choose another fixed track count from 1 to 12. Use <code>kos-col-span</code> on children to span tracks. A span of 12 fills all twelve tracks, and combinations such as 8 + 4 fill a complete row.</p>
-          <pre><code>{`<div class="kos-grid" kos-cols="12">
+          <pre><code>{`<div class="kos-grid">
   <article kos-col-span="8">Main</article>
   <aside kos-col-span="4">Aside</aside>
 </div>`}</code></pre>
@@ -50,13 +50,13 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
           <h2>Gutters</h2>
           <p>Gaps default to 1.5rem. Use the gap utilities or override <code>--kos-gutter</code> for custom spacing.</p>
           <pre><code>{`<div class="kos-grid kos-gap-4" kos-cols="3">...</div>
-<div class="kos-grid" kos-cols="12" style="--kos-gutter: 2rem">...</div>`}</code></pre>
+<div class="kos-grid" style="--kos-gutter: 2rem">...</div>`}</code></pre>
           <p>Available utilities are <code>.kos-gap-0</code>, <code>.kos-gap-2</code>, <code>.kos-gap-4</code>, <code>.kos-gap-6</code>, and <code>.kos-gap-8</code>. Native CSS Grid fractional tracks account for gutters automatically.</p>
         </section>
         <section id="offsets">
           <h2>Offsets</h2>
           <p>Use <code>kos-offset</code> values 1–6 to set a child's starting grid line. Offsets are explicit positions, not additive margins: ensure the offset and span fit within the grid.</p>
-          <pre><code>{`<div class="kos-grid" kos-cols="12">
+          <pre><code>{`<div class="kos-grid">
   <article kos-col-span="6" kos-offset="3">Shifted content</article>
 </div>`}</code></pre>
           <p>For example, offset 3 starts on grid line 4; with span 6 it ends at line 10. An offset plus a span that exceeds the grid can create implicit tracks, so choose combinations deliberately.</p>
@@ -65,7 +65,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
           <h2>Responsive compositions</h2>
           <p>Add <code>.kos-composition</code> around one or more fixed grids to opt into container-query responsiveness. Below a 48rem containing width, each direct child stacks into a single column.</p>
           <pre><code>{`<section class="kos-composition">
-  <div class="kos-grid" kos-cols="12">
+  <div class="kos-grid">
     <div kos-col-span="7">Visual</div>
     <div kos-col-span="5">Copy</div>
   </div>
@@ -80,7 +80,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
   <div kos-col-span="6">Right</div>
 </div>`}</code></pre>
           <p>For an intrinsic CSS Grid layout, add <code>.kos-grid--auto</code>. Kōshi uses auto-fit with a configurable minimum item size. Add <code>.kos-grid--fill</code> to retain empty tracks instead of collapsing them.</p>
-          <pre><code>{`<div class="kos-grid" style="--kos-grid-min-item-size: 14rem">
+          <pre><code>{`<div class="kos-grid kos-grid--auto" style="--kos-grid-min-item-size: 14rem">
   <article>One</article>
   <article>Two</article>
   <article>Three</article>
