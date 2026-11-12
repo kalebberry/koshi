@@ -70,7 +70,6 @@ button:focus-visible, input:focus-visible { outline: 2px solid #252522; outline-
 .code-panel { background: #282722; color: #edece6; font: 12px/1.6 ui-monospace, monospace; overflow: auto; padding: 24px; max-height: 350px; }
 .copy-note { font-size: 13px; color: #a14533; }
 .implementation-note { font-size: 11px; line-height: 1.7; color: #77736a; margin-top: 18px; }
-.site-footer { border-top: 1px solid #d7d4cc; padding: 36px 0 60px; margin-top: 120px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 20px; font-size: 10px; letter-spacing: .14em; color: #8f8b82; }
 @media(max-width: 740px) {
   .lab-shell { width: min(100% - 36px, 1360px); }
   .gallery { grid-template-columns: minmax(0, 1fr); }
