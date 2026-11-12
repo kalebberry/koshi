@@ -46,12 +46,16 @@
 
 .kos-grid {
   display: grid;
-  grid-template-columns: repeat(var(--kos-grid-placement, auto-fit), minmax(min(100%, var(--kos-grid-min-item-size)), 1fr));
+  grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: var(--kos-gutter);
   min-width: 0;
   align-items: start;
 }
 .kos-grid > * { min-width: 0; }
+/* Opt into intrinsic tracks; the default grid always uses twelve columns. */
+.kos-grid.kos-grid--auto {
+  grid-template-columns: repeat(var(--kos-grid-placement, auto-fit), minmax(min(100%, var(--kos-grid-min-item-size)), 1fr));
+}
 .kos-grid[kos-cols="1"] { grid-template-columns: repeat(1, minmax(0, 1fr)); }
 .kos-grid[kos-cols="2"] { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .kos-grid[kos-cols="3"] { grid-template-columns: repeat(3, minmax(0, 1fr)); }
@@ -142,7 +146,7 @@
 .kos-composition { container-type: inline-size; }
 .kos-composition > .kos-grid + .kos-grid { margin-block-start: var(--kos-gutter); }
 @container (max-width: 48rem) {
-  .kos-composition > .kos-grid[kos-cols] { grid-template-columns: minmax(0, 1fr); }
+  .kos-composition > .kos-grid:not(.kos-grid--auto) { grid-template-columns: minmax(0, 1fr); }
   .kos-composition > .kos-grid > [kos-col-span] {
     grid-column: 1 / -1;
     grid-row: auto;
