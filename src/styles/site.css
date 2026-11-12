@@ -48,7 +48,7 @@ button, input { font: inherit; }
 .code-sample { padding: 26px; background: #292823; color: #eeece5; overflow-x: auto; font: 12px/1.8 ui-monospace, SFMono-Regular, Consolas, monospace; }
 .docs-head { padding-block: 85px 50px; }
 .docs-head .display { font-size: clamp(46px, 6vw, 78px); }
-.docs-layout { display: grid; grid-template-columns: minmax(170px, 220px) minmax(0, 760px); gap: clamp(30px, 7vw, 100px); align-items: start; padding-bottom: 110px; }
+.docs-layout { display: grid; grid-template-columns: minmax(170px, 220px) minmax(0, 920px); gap: clamp(30px, 7vw, 100px); align-items: start; padding-bottom: 110px; }
 .docs-toc { position: sticky; top: 24px; display: grid; gap: 14px; }
 .docs-toc a { color: #716d65; font-size: 12px; text-decoration: none; }
 .docs-toc a:hover { color: #25231f; text-decoration: underline; }
