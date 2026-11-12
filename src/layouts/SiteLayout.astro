@@ -1,0 +1,38 @@
+---
+import '../styles/koshi.css';
+import '../styles/site.css';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+const { title, description = 'Kōshi is a lightweight CSS grid system for intentional, responsive layouts.' } = Astro.props;
+const pathname = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#f7f5f0" />
+    <meta name="description" content={description} />
+    <title>{title} — Kōshi 格子</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-nav shell">
+      <a class="site-brand" href="/" aria-label="Kōshi home"><span lang="ja">格子</span><strong>KŌSHI</strong></a>
+      <nav aria-label="Main navigation">
+        <a href="/" aria-current={pathname === '/' ? 'page' : undefined}>Home</a>
+        <a href="/docs/" aria-current={pathname.startsWith('/docs') ? 'page' : undefined}>Documentation</a>
+        <a href="/lab/" aria-current={pathname.startsWith('/lab') ? 'page' : undefined}>Composition Lab</a>
+        <a href="https://github.com/kalebberry/koshi" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
+    </header>
+    <main id="main"><slot /></main>
+    <footer class="site-footer shell">
+      <span>格子 — KŌSHI</span><span>LAYOUTS WITH INTENTION.</span>
+      <span>OPEN SOURCE / <a href="https://github.com/kalebberry/koshi/blob/main/LICENSE">MIT</a></span>
+    </footer>
+  </body>
+</html>

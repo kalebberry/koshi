@@ -1,19 +1,49 @@
 ---
-import CompositionLab from '../components/CompositionLab.vue';
-import '../styles/koshi.css';
-import '../styles/lab.css';
+import SiteLayout from '../layouts/SiteLayout.astro';
 ---
+<SiteLayout title="Structure with intention" description="Kōshi is a lightweight, dependency-free CSS grid system for thoughtful responsive layouts. Explore the documentation and interactive Composition Lab.">
+  <div class="shell">
+    <section class="hero-section">
+      <span class="eyebrow">A modern CSS grid system — 格子</span>
+      <h1 class="display">Structure<br /><em>with intention.</em></h1>
+      <p class="lead">A lightweight, flexible CSS grid system for crafting thoughtful, responsive layouts. No framework required. Just CSS, proportion, and room to experiment.</p>
+      <div class="actions">
+        <a class="action action-primary" href="/docs/">Get started ↗</a>
+        <a class="action action-outline" href="/downloads/koshi.css" download="koshi.css">Download CSS ↓</a>
+        <a class="action action-outline" href="/lab/">Explore the Lab ↗</a>
+      </div>
+    </section>
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#f7f5f0" />
-    <meta name="description" content="Kōshi — a modern CSS grid system and interactive playground for intentional editorial compositions." />
-    <title>Kōshi 格子 — Composition Lab</title>
-  </head>
-  <body>
-    <CompositionLab client:load />
-  </body>
-</html>
+    <section aria-labelledby="system-title">
+      <div class="section-label"><span class="eyebrow">01 / THE SYSTEM</span><span class="eyebrow">12 COLUMNS · ONE FOUNDATION</span></div>
+      <h2 id="system-title" class="section-title">An underlying rhythm.</h2>
+      <p class="lead">Start with twelve tracks. Divide the space into deliberate proportions, or let an intrinsic grid respond to the available room.</p>
+      <div class="grid-demonstration">
+        <div class="demo-meta"><span>GRID / 12 COLUMNS</span><span>8 + 4 = 12</span></div>
+        <div class="demo-grid" aria-label="An eight-column area beside a four-column area"><div class="feature"><span>08 / 12</span></div><div class="aside"><span>04 / 12</span></div></div>
+      </div>
+    </section>
+
+    <section aria-labelledby="explore-title">
+      <div class="section-label"><span class="eyebrow">02 / EXPLORE</span><span class="eyebrow">FROM FOUNDATION TO FORM</span></div>
+      <h2 id="explore-title" class="section-title">Make space for ideas.</h2>
+      <div class="feature-links">
+        <a class="feature-link" href="/docs/"><span class="number">01 / LEARN</span><div><h3>Documentation ↗</h3><p>Understand columns, spans, gutters, offsets, and responsive compositions.</p></div></a>
+        <a class="feature-link" href="/lab/"><span class="number">02 / EXPLORE</span><div><h3>Composition Lab ↗</h3><p>Browse editorial layout studies and copy structures into your own work.</p></div></a>
+        <a class="feature-link" href="/downloads/koshi.css" download="koshi.css"><span class="number">03 / BUILD</span><div><h3>Download Kōshi ↓</h3><p>Take the standalone CSS file. No JavaScript, Vue, or Astro required.</p></div></a>
+      </div>
+    </section>
+
+    <section style="padding-bottom: 115px" aria-labelledby="start-title">
+      <div class="section-label"><span class="eyebrow">03 / GET STARTED</span><span class="eyebrow">PLAIN HTML + CSS</span></div>
+      <h2 id="start-title" class="section-title">Start with the grid.</h2>
+      <pre class="code-sample"><code>{`<link rel="stylesheet" href="/css/koshi.css" />
+
+<div class="kos-grid" kos-cols="12">
+  <main kos-col-span="8">Your content</main>
+  <aside kos-col-span="4">A supporting space</aside>
+</div>`}</code></pre>
+      <div class="actions"><a class="action action-outline" href="/docs/">Read the documentation ↗</a></div>
+    </section>
+  </div>
+</SiteLayout>
