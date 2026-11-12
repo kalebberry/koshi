@@ -104,17 +104,21 @@
 .kos-flex-grid > [kos-grow="1"] { flex-grow: 1; }
 .kos-flex-grid > [kos-grow="2"] { flex-grow: 2; }
 .kos-flex-grid > [kos-grow="3"] { flex-grow: 3; }
-.kos-flex-grid > [kos-col-span="1"] { flex-basis: calc(100% / 12 * 1 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="2"] { flex-basis: calc(100% / 12 * 2 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="3"] { flex-basis: calc(100% / 12 * 3 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="4"] { flex-basis: calc(100% / 12 * 4 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="5"] { flex-basis: calc(100% / 12 * 5 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="6"] { flex-basis: calc(100% / 12 * 6 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="7"] { flex-basis: calc(100% / 12 * 7 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="8"] { flex-basis: calc(100% / 12 * 8 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="9"] { flex-basis: calc(100% / 12 * 9 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="10"] { flex-basis: calc(100% / 12 * 10 - var(--kos-gutter)); }
-.kos-flex-grid > [kos-col-span="11"] { flex-basis: calc(100% / 12 * 11 - var(--kos-gutter)); }
+/* Each span includes its internal gutters. A full 12/12 span is exactly 100%.
+ * Width(s) = (s / 12) * width - ((12 - s) / 12) * gutter.
+ * For spans summing to 12, the total widths plus their outer gaps equal 100%.
+ */
+.kos-flex-grid > [kos-col-span="1"] { flex-basis: calc(100% * 1 / 12 - var(--kos-gutter) * 11 / 12); }
+.kos-flex-grid > [kos-col-span="2"] { flex-basis: calc(100% * 2 / 12 - var(--kos-gutter) * 10 / 12); }
+.kos-flex-grid > [kos-col-span="3"] { flex-basis: calc(100% * 3 / 12 - var(--kos-gutter) * 9 / 12); }
+.kos-flex-grid > [kos-col-span="4"] { flex-basis: calc(100% * 4 / 12 - var(--kos-gutter) * 8 / 12); }
+.kos-flex-grid > [kos-col-span="5"] { flex-basis: calc(100% * 5 / 12 - var(--kos-gutter) * 7 / 12); }
+.kos-flex-grid > [kos-col-span="6"] { flex-basis: calc(100% * 6 / 12 - var(--kos-gutter) * 6 / 12); }
+.kos-flex-grid > [kos-col-span="7"] { flex-basis: calc(100% * 7 / 12 - var(--kos-gutter) * 5 / 12); }
+.kos-flex-grid > [kos-col-span="8"] { flex-basis: calc(100% * 8 / 12 - var(--kos-gutter) * 4 / 12); }
+.kos-flex-grid > [kos-col-span="9"] { flex-basis: calc(100% * 9 / 12 - var(--kos-gutter) * 3 / 12); }
+.kos-flex-grid > [kos-col-span="10"] { flex-basis: calc(100% * 10 / 12 - var(--kos-gutter) * 2 / 12); }
+.kos-flex-grid > [kos-col-span="11"] { flex-basis: calc(100% * 11 / 12 - var(--kos-gutter) * 1 / 12); }
 .kos-flex-grid > [kos-col-span="12"] { flex-basis: 100%; }
 
 .kos-sidebar-grid {
