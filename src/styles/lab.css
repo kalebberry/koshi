@@ -48,7 +48,7 @@ button:focus-visible, input:focus-visible { outline: 2px solid #252522; outline-
 .gap-label output { min-width: 35px; font-variant-numeric: tabular-nums; }
 .preview-stage { background: #eae8e2; padding: clamp(16px, 3.5vw, 48px); margin-top: 22px; overflow: auto; }
 .preview-paper { background: #fcfbf8; padding: clamp(18px, 4.5vw, 60px); min-height: 320px; width: 100%; margin: 0 auto; }
-.preview-paper--mobile { width: min(100%, 390px); }
+
 .preview-mast { display: flex; justify-content: space-between; color: #aaa69c; font-size: 10px; letter-spacing: .12em; border-bottom: 1px solid #e4e0d8; padding-bottom: 16px; margin-bottom: 24px; }
 .preview-block { min-width: 0; display: flex; flex-direction: column; justify-content: center; }
 .preview-block.block--space { min-height: 55px; }
@@ -62,8 +62,6 @@ button:focus-visible, input:focus-visible { outline: 2px solid #252522; outline-
 .sample-copy p { color: #77736a; font-size: 13px; line-height: 1.75; max-width: 33ch; }
 .sample-quote { padding: 22px; font: italic 400 clamp(20px, 3.2vw, 42px)/1.2 var(--font-heading); }
 .wire-label { text-align: center; font-size: 12px; color: #99958c; }
-.preview-paper--mobile .kos-composition .kos-grid { grid-template-columns: minmax(0,1fr); }
-.preview-paper--mobile .kos-composition .kos-grid > * { grid-column: 1 / -1; }
 .export-bar { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-top: 34px; }
 .export-bar p { color: #77736a; font-size: 13px; line-height: 1.6; }
 .export-buttons { display: flex; flex-wrap: wrap; gap: 8px; }
@@ -80,3 +78,11 @@ button:focus-visible, input:focus-visible { outline: 2px solid #252522; outline-
   .control-bar { gap: 14px; }
   .hero { padding-top: 80px; }
 }
+
+/* Continuous responsive preview: the canvas has a real CSS width, so container queries run naturally. */
+.width-label { display: inline-flex; align-items: baseline; gap: 12px; color: #57554e; font-size: 12px; white-space: nowrap; }
+.width-label output { font-variant-numeric: tabular-nums; font-weight: 600; min-width: 52px; }
+.width-slider { accent-color: #292823; width: clamp(120px, 22vw, 280px); max-width: 100%; cursor: pointer; }
+.width-reset { background: none; border: 0; padding: 9px 3px; font-size: 12px; color: #57554e; text-decoration: underline; text-underline-offset: 4px; }
+.width-reset:hover { color: #24231f; }
+.preview-paper { max-width: none; box-sizing: border-box; }
