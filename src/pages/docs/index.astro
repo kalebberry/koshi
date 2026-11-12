@@ -12,6 +12,7 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
     <div class="docs-layout">
       <nav class="docs-toc" aria-label="Documentation sections">
         <span class="eyebrow">ON THIS PAGE</span>
+        <a href="#system">Understanding the system</a>
         <a href="#installation">Installation</a>
         <a href="#containers">Containers</a>
         <a href="#columns">Columns & spans</a>
@@ -22,6 +23,97 @@ import SiteLayout from '../../layouts/SiteLayout.astro';
         <a href="#utilities">Other utilities</a>
       </nav>
       <article class="docs-body">
+        <section id="system" class="docs-system">
+          <span class="eyebrow">01 / THE FOUNDATION</span>
+          <h2>Understanding the system</h2>
+          <p>Think of a row as twelve equal parts. A block takes a share of that row: <strong>6 + 6</strong> makes two halves, <strong>8 + 4</strong> makes a main area and sidebar, and <strong>4 + 4 + 4</strong> makes three equal columns. Kōshi accounts for the space between blocks using CSS Grid's native gaps.</p>
+          <div class="docs-twelve" aria-label="Twelve equal columns">
+            {Array.from({ length: 12 }, (_, i) => <span>{String(i + 1).padStart(2, '0')}</span>)}
+          </div>
+          <p class="docs-small-note">Twelve tracks represent the whole row. The numbers describe proportions, not pixel widths.</p>
+
+          <h3>Three ways to divide the same space</h3>
+          <div class="docs-examples">
+            <div class="docs-example">
+              <div class="docs-example-top"><span>01 / BALANCED</span><strong>6 + 6</strong></div>
+              <div class="kos-grid docs-block-grid">
+                <div kos-col-span="6" class="docs-block">06 / 12</div>
+                <div kos-col-span="6" class="docs-block docs-block--light">06 / 12</div>
+              </div>
+              <pre><code>{`<div class="kos-grid">
+  <div kos-col-span="6">Left</div>
+  <div kos-col-span="6">Right</div>
+</div>`}</code></pre>
+            </div>
+            <div class="docs-example">
+              <div class="docs-example-top"><span>02 / ASYMMETRIC</span><strong>8 + 4</strong></div>
+              <div class="kos-grid docs-block-grid">
+                <div kos-col-span="8" class="docs-block">08 / 12</div>
+                <div kos-col-span="4" class="docs-block docs-block--light">04 / 12</div>
+              </div>
+              <pre><code>{`<div class="kos-grid">
+  <main kos-col-span="8">Main</main>
+  <aside kos-col-span="4">Aside</aside>
+</div>`}</code></pre>
+            </div>
+            <div class="docs-example">
+              <div class="docs-example-top"><span>03 / EVEN RHYTHM</span><strong>4 + 4 + 4</strong></div>
+              <div class="kos-grid docs-block-grid">
+                <div kos-col-span="4" class="docs-block">04 / 12</div>
+                <div kos-col-span="4" class="docs-block docs-block--light">04 / 12</div>
+                <div kos-col-span="4" class="docs-block">04 / 12</div>
+              </div>
+              <pre><code>{`<div class="kos-grid">
+  <div kos-col-span="4">One</div>
+  <div kos-col-span="4">Two</div>
+  <div kos-col-span="4">Three</div>
+</div>`}</code></pre>
+            </div>
+          </div>
+          <p><strong>No <code>kos-cols="12"</code> required.</strong> A direct child with <code>kos-col-span</code> tells Kōshi to use twelve proportional tracks. Without spans, the grid stays automatic. You can still explicitly set <code>kos-cols</code> when you want a different fixed track count.</p>
+
+          <h3>Build an editorial composition</h3>
+          <p>Combine rows to create a larger structure. The example below uses two independent grids inside <code>.kos-composition</code>: a wide feature beside supporting copy, followed by three equal blocks. The container query stacks the blocks when the composition becomes narrow.</p>
+          <div class="docs-composition-demo">
+            <div class="kos-composition">
+              <div class="kos-grid docs-block-grid">
+                <div kos-col-span="8" class="docs-block docs-block--feature"><span>FEATURE / 08</span><strong>Space shapes the story.</strong></div>
+                <div kos-col-span="4" class="docs-block docs-block--light docs-block--feature"><span>TEXT / 04</span><strong>A considered balance.</strong></div>
+              </div>
+              <div class="kos-grid docs-block-grid">
+                <div kos-col-span="4" class="docs-block">01 / 04</div>
+                <div kos-col-span="4" class="docs-block docs-block--light">02 / 04</div>
+                <div kos-col-span="4" class="docs-block">03 / 04</div>
+              </div>
+            </div>
+          </div>
+          <pre><code>{`<section class="kos-composition">
+  <div class="kos-grid">
+    <div kos-col-span="8">Feature</div>
+    <div kos-col-span="4">Supporting copy</div>
+  </div>
+  <div class="kos-grid">
+    <div kos-col-span="4">One</div>
+    <div kos-col-span="4">Two</div>
+    <div kos-col-span="4">Three</div>
+  </div>
+</section>`}</code></pre>
+          <p class="docs-small-note">Resize the browser to see the composition adapt. The breakpoint is based on its container width, not only the viewport.</p>
+
+          <h3>Automatic layout versus proportional layout</h3>
+          <p>For cards that should fit as space allows, leave off span attributes. Kōshi uses <code>auto-fit</code> and <code>--kos-grid-min-item-size</code>. Add spans when the relationship between blocks matters.</p>
+          <div class="kos-grid docs-auto-demo" style="--kos-grid-min-item-size: 9rem; --kos-gutter: .75rem">
+            <div class="docs-block">AUTO / 01</div>
+            <div class="docs-block docs-block--light">AUTO / 02</div>
+            <div class="docs-block">AUTO / 03</div>
+          </div>
+          <pre><code>{`<div class="kos-grid" style="--kos-grid-min-item-size: 9rem">
+  <article>Card one</article>
+  <article>Card two</article>
+  <article>Card three</article>
+</div>`}</code></pre>
+          <p class="docs-small-note">Use automatic grids for flexible collections; use spans for deliberate 12-part compositions. Both are plain CSS.</p>
+        </section>
         <section id="installation">
           <h2>Installation</h2>
           <p>Download the standalone CSS file and serve it from your project. Kōshi requires no framework, JavaScript, or build step.</p>
