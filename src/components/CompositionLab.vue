@@ -43,12 +43,7 @@ async function copy(type: 'html' | 'css' | 'both') {
 </script>
 
 <template>
-  <main class="lab-shell">
-    <header class="site-header">
-      <div class="wordmark"><span class="kanji">格子</span> <span>KŌSHI</span></div>
-      <div class="header-meta">GRID SYSTEM <span class="header-divider">/</span> COMPOSITION LAB — 001</div>
-    </header>
-
+  <div class="lab-shell">
     <section class="hero">
       <span class="overline">An experiment in proportion & rhythm</span>
       <h1>Explore the space<br /><em>between elements.</em></h1>
@@ -124,6 +119,5 @@ async function copy(type: 'html' | 'css' | 'both') {
       <pre v-if="showCode" class="code-panel"><code>{{ generatedCode }}</code></pre>
       <p class="implementation-note">Exports require the independent Kōshi stylesheet. Composition helpers are included with the copied CSS. This is a layout exploration tool, not a website builder.</p>
     </section>
-    <footer class="site-footer"><span>格子 — KŌSHI</span><span>LAYOUTS WITH INTENTION.</span><span>OPEN SOURCE / MIT</span></footer>
-  </main>
+  </div>
 </template>
