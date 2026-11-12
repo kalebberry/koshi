@@ -62,7 +62,7 @@ async function copy(type: 'html' | 'css' | 'both') {
       <button v-for="(study, index) in studies" :key="study.id" class="study-card" :class="{ 'study-card--selected': selected === index }" type="button" :aria-pressed="selected === index" @click="selectStudy(index)">
         <div class="card-meta"><span>STUDY {{ String(index + 1).padStart(2, '0') }}</span><span>{{ selected === index ? '●' : '↗' }}</span></div>
         <div class="study-sketch" aria-hidden="true">
-          <div v-for="(row, rowIndex) in study.rows" :key="rowIndex" class="kos-grid" kos-cols="12">
+          <div v-for="(row, rowIndex) in study.rows" :key="rowIndex" class="kos-grid">
             <div v-for="(block, blockIndex) in row" :key="blockIndex" class="sketch-block" :class="'sketch-block--' + block.kind" :kos-col-span="block.span" :kos-offset="block.offset || undefined">
               <template v-if="block.kind === 'text'"><i></i><i></i><i></i></template>
               <span v-else-if="block.kind === 'image'">▧</span>
@@ -93,7 +93,7 @@ async function copy(type: 'html' | 'css' | 'both') {
         <div class="preview-paper" :class="{ 'preview-paper--mobile': device === 'mobile' }">
           <div class="preview-mast"><span>格子 / KŌSHI</span><span>STUDY {{ String(selected + 1).padStart(2, '0') }}</span></div>
           <div class="kos-composition" :style="{ '--kos-gutter': gap + 'px' }">
-            <div v-for="(row, rowIndex) in active.rows" :key="rowIndex" class="kos-grid" kos-cols="12">
+            <div v-for="(row, rowIndex) in active.rows" :key="rowIndex" class="kos-grid">
               <div v-for="(block, blockIndex) in row" :key="blockIndex" class="preview-block" :class="kindClass(block)" :kos-col-span="block.span" :kos-offset="block.offset || undefined">
                 <template v-if="showContent">
                   <template v-if="block.kind === 'image'"><div class="sample-image"><span>IMAGE / VISUAL</span></div></template>
