@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=WDXL+Lubrifont+JP+N&display=swap");
 :root {
   --font-heading: "Familjen Grotesk", sans-serif;
   --font-body: "Space Grotesk", sans-serif;
@@ -140,4 +140,10 @@ html, body { max-width: 100%; }
     grid-column: 1 / -1;
     grid-row: auto;
   }
+}
+
+/* Japanese typography shared with Studio Eien; Latin type remains unchanged. */
+:lang(ja) {
+  font-family: 'WDXL Lubrifont JP N', sans-serif;
+  font-synthesis: none;
 }
