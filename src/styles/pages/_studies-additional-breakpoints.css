@@ -1,0 +1,44 @@
+@container study (max-width:58rem){
+.study-triptych{grid-template-columns:repeat(3,minmax(0,1fr))}
+.study-essay>.essay-title{grid-column:span 8}
+.study-essay>.essay-meta{grid-column:span 4}
+.study-catalogue>[kos-col-span="7"],.study-catalogue>[kos-col-span="5"]{grid-column:span 6}
+.study-manifesto>[kos-col-span="8"],.study-manifesto>[kos-col-span="4"]{grid-column:span 6}
+}
+@container study (max-width:42rem){
+.triptych-heading>[kos-col-span="4"],.triptych-heading>[kos-col-span="8"]{grid-column:1/-1}
+.triptych-heading{margin:2rem 0 1rem}
+.study-triptych{grid-template-columns:repeat(2,minmax(0,1fr))}
+.triptych-image:last-child{grid-column:1/-1;aspect-ratio:16/9;min-height:12rem}
+.study-essay>.essay-title,.study-essay>.essay-meta,.study-essay>.essay-footnote,.study-essay>.essay-body{grid-column:1/-1}
+.essay-meta{flex-direction:row;justify-content:space-between}
+.study-catalogue>[kos-col-span="7"],.study-catalogue>[kos-col-span="5"],.study-manifesto>[kos-col-span="8"],.study-manifesto>[kos-col-span="4"]{grid-column:1/-1}
+.catalogue-feature{min-height:25rem}
+.catalogue-side{grid-template-columns:repeat(2,minmax(0,1fr))}
+.catalogue-side article{min-height:13rem}
+.manifesto-side{border-left:0;border-top:1px solid #bdb6ac}
+}
+@container study (max-width:24rem){
+.study-triptych{grid-template-columns:1fr}
+.triptych-image:last-child{grid-column:auto;aspect-ratio:3/4}
+.catalogue-side{grid-template-columns:1fr}
+.triptych-top,.triptych-bottom,.essay-masthead{flex-wrap:wrap}
+}
+@media(max-width:42rem){.study-heading{display:block}.study-heading>p{margin-top:1rem}.study-preview-viewport{padding:.5rem}}
+
+/* Container-relative type: the slider changes the composition, not browser vw. */
+.study-canvas { --study-display: clamp(1.5rem, 5cqi, 4.5rem); --study-title: clamp(1.125rem, 3cqi, 2.25rem); overflow-wrap: anywhere; }
+.study-canvas .feature-copy h3,.study-canvas .schedule-content h3,.study-canvas .catalogue-feature h3 {font-size:var(--study-display)}
+.study-canvas .triptych-heading h3,.study-canvas .essay-title h3 {font-size:var(--study-display)}
+.study-canvas .manifesto-main h3 {font-size:clamp(2rem,7cqi,6rem)}
+.study-canvas .study-project h3 {font-size:clamp(.9rem,1.8cqi,1.5rem)}
+.study-canvas .schedule-row span {font-size:var(--study-title)}
+.study-canvas .art-line-mark,.study-canvas .schedule-visual>strong,.study-canvas .manifesto-side>div {font-size:clamp(3rem,12cqi,10rem)}
+.study-canvas .feature-copy,.study-canvas .schedule-content,.study-canvas .manifesto-main,.study-canvas .manifesto-side {min-width:0}
+.study-canvas .study-essay,.study-canvas .study-triptych,.study-canvas .study-feature,.study-canvas .study-schedule,.study-canvas .study-catalogue,.study-canvas .study-manifesto {min-width:0}
+@container study (max-width: 26rem) {
+.study-canvas .schedule-row {grid-template-columns:3.5rem minmax(0,1fr) 1rem;gap:.4rem}
+.study-canvas .schedule-row time {font-size:.58rem}
+.study-canvas .essay-masthead,.study-canvas .triptych-top,.study-canvas .triptych-bottom {font-size:.55rem}
+.study-canvas .feature-copy h3,.study-canvas .schedule-content h3 {margin-block:1.25rem}
+}
