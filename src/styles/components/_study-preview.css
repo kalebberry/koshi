@@ -1,5 +1,5 @@
 /* Viewport controls resize real CSS layout; container queries respond to that width. */
-.study-preview-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:0 0 .8rem;font-size:.75rem}
+.study-preview-controls{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin:.9rem 0 1.25rem;font-size:.75rem}
 .study-preview-controls label{display:flex;gap:.6rem;white-space:nowrap;align-items:center}
 .study-preview-controls output{font-variant-numeric:tabular-nums;color:#68645c}
 .study-preview-controls input{flex:1;min-width:8rem;accent-color:#282722}
