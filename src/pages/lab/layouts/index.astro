@@ -24,7 +24,7 @@ schedule: `<div class="kos-grid study-schedule" kos-cols="12">
 };
 ---
 <SiteLayout title="Layout Studies" description="Explore responsive compositions built with the real Kōshi CSS grid.">
-  <main class="studies-shell shell">
+  <div class="studies-shell shell">
     <header class="studies-intro">
       <p class="studies-kicker">KŌSHI / COMPOSITION LAB / 001—003</p>
       <h1>Layouts with <em>intention.</em></h1>
@@ -55,5 +55,5 @@ schedule: `<div class="kos-grid study-schedule" kos-cols="12">
       <details class="study-source"><summary>View Kōshi structure <span>+</span></summary><pre><code>{snippets[s.id as keyof typeof snippets]}</code></pre><p>The markup above shows the structural grid. Composition-specific CSS controls the visual proportions, offsets, and responsive presentation. All examples load the project's actual <code>src/styles/koshi.css</code> through SiteLayout.</p></details>
     </section>)}
     <footer class="studies-end"><p>Structure by Kōshi. Art direction by you.</p><a href="/lab/">Explore Composition Lab ↗</a></footer>
-  </main>
+  </div>
 </SiteLayout>
