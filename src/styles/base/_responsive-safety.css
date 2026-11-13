@@ -1,0 +1,39 @@
+/* Mobile overflow containment: scroll code and tables, never the document. */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { max-width: 100%; }
+.shell, main, .docs-layout, .docs-body, .docs-body section, .docs-example, .docs-composition-demo { min-width: 0; }
+.docs-layout { grid-template-columns: minmax(0, 220px) minmax(0, 1fr); }
+.docs-body pre, .code-sample { max-width: 100%; overflow-x: auto; }
+.docs-body pre code, .code-sample code { white-space: pre; }
+.docs-body table { display: block; max-width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.docs-body p, .docs-body li, .lead { overflow-wrap: break-word; }
+@media (max-width: 760px) {
+  .docs-layout { grid-template-columns: minmax(0, 1fr); }
+  .docs-toc { min-width: 0; }
+  .docs-body pre, .code-sample { padding: 16px; }
+  .docs-example-top { flex-wrap: wrap; }
+  .docs-block-grid { --kos-gutter: 6px; }
+  .docs-example > .kos-grid > [kos-col-span] { grid-column: 1 / -1; }
+  .docs-composition-demo .kos-composition > .kos-grid > [kos-col-span] { min-width: 0; }
+  .display { font-size: clamp(38px, 10vw, 64px); overflow-wrap: anywhere; }
+  .site-nav nav { min-width: 0; row-gap: 12px; }
+  .section-label, .demo-meta { flex-wrap: wrap; }
+}
+@media (max-width: 390px) {
+  .docs-twelve span { font-size: 7px; }
+  .docs-block--feature strong { overflow-wrap: anywhere; }
+}
+/* Documentation studies respond to their own available width, not device labels. */
+.docs-example { container-type: inline-size; }
+.docs-example > .kos-grid { min-width: 0; max-width: 100%; }
+.docs-composition-demo, .docs-composition-demo .kos-composition,
+.docs-composition-demo .kos-grid { min-width: 0; max-width: 100%; }
+@container (max-width: 34rem) {
+  .docs-example > .kos-grid:not([kos-cols]):has(> [kos-col-span]) {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .docs-example > .kos-grid > [kos-col-span] {
+    grid-column: 1 / -1;
+    grid-row: auto;
+  }
+}
