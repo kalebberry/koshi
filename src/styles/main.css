@@ -1,0 +1,12 @@
+/* Kōshi website styles: 7–1-inspired CSS architecture.
+   The standalone grid distribution (koshi.css) remains unchanged. */
+@import "./vendors/_fonts.css";
+@import "./abstracts/_tokens.css";
+@import "./base/_foundation.css";
+@import "./layout/_shell-navigation.css";
+@import "./pages/_home.css";
+@import "./pages/_documentation.css";
+@import "./layout/_footer-responsive.css";
+@import "./components/_documentation-examples.css";
+@import "./base/_responsive-safety.css";
+@import "./themes/_japanese-type.css";

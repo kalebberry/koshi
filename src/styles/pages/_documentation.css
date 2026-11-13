@@ -1,0 +1,15 @@
+.docs-head { padding-block: 85px 50px; }
+.docs-head .display { font-size: clamp(46px, 6vw, 78px); }
+.docs-layout { display: grid; grid-template-columns: minmax(170px, 220px) minmax(0, 920px); gap: clamp(30px, 7vw, 100px); align-items: start; padding-bottom: 110px; }
+.docs-toc { position: sticky; top: 24px; display: grid; gap: 14px; }
+.docs-toc a { color: #716d65; font-size: 12px; text-decoration: none; }
+.docs-toc a:hover { color: #25231f; text-decoration: underline; }
+.docs-body section { padding: 0 0 45px; margin-bottom: 45px; border-bottom: 1px solid #d8d5cc; scroll-margin-top: 25px; }
+.docs-body h2 { font: 400 34px var(--font-heading); margin: 0 0 20px; }
+.docs-body h3 { font-size: 16px; margin-top: 28px; }
+.docs-body p, .docs-body li { color: #67645d; line-height: 1.85; font-size: 14px; }
+.docs-body code:not(pre code) { font-size: 12px; background: #e9e6df; padding: 2px 5px; }
+.docs-body pre { background: #292823; color: #eeeae1; padding: 24px; overflow-x: auto; font: 12px/1.75 ui-monospace, monospace; }
+.docs-body table { border-collapse: collapse; width: 100%; font-size: 13px; }
+.docs-body td, .docs-body th { padding: 12px 8px; border-bottom: 1px solid #d6d2ca; text-align: left; }
+.docs-body td { color: #66635c; }
