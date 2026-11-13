@@ -1,0 +1,59 @@
+---
+import SiteLayout from '../../../layouts/SiteLayout.astro';
+import '../../../styles/layout-studies.css';
+const studies = [
+  { id:'portfolio', number:'01', title:'Editorial portfolio', type:'Asymmetric gallery', description:'Four independent projects share one structural grid. Offsets and proportions create rhythm without changing the columns.' },
+  { id:'feature', number:'02', title:'Split feature', type:'Unequal columns', description:'A quiet editorial feature pairs a large visual with compact copy, using an eight/four column split.' },
+  { id:'schedule', number:'03', title:'Event schedule', type:'Structured information', description:'A tour-inspired composition pairs a visual panel with an orderly schedule, then stacks naturally at narrow widths.' },
+];
+const snippets = {
+portfolio: `<div class="kos-grid study-portfolio" kos-cols="4">
+  <article class="study-project">…</article>
+  <article class="study-project">…</article>
+  <article class="study-project">…</article>
+  <article class="study-project">…</article>
+</div>`,
+feature: `<div class="kos-grid study-feature" kos-cols="12">
+  <div kos-col-span="8">Visual</div>
+  <article kos-col-span="4">Story</article>
+</div>`,
+schedule: `<div class="kos-grid study-schedule" kos-cols="12">
+  <div kos-col-span="5">Visual</div>
+  <div kos-col-span="7">Schedule</div>
+</div>`
+};
+---
+<SiteLayout title="Layout Studies" description="Explore responsive compositions built with the real Kōshi CSS grid.">
+  <div class="studies-shell shell">
+    <header class="studies-intro">
+      <p class="studies-kicker">KŌSHI / COMPOSITION LAB / 001—003</p>
+      <h1>Layouts with <em>intention.</em></h1>
+      <p>Three responsive compositions built with Kōshi's actual grid primitives. The structure belongs to Kōshi; the art direction belongs to each study.</p>
+      <a href="/lab/" class="studies-back">← Back to Composition Lab</a>
+    </header>
+    <nav class="studies-index" aria-label="Jump to a layout study">
+      {studies.map(s => <a href={`#${s.id}`}><span>{s.number}</span><strong>{s.title}</strong><span>↘</span></a>)}
+    </nav>
+    {studies.map(s => <section id={s.id} class="study-section" aria-labelledby={`${s.id}-title`}>
+      <div class="study-heading"><div><p class="studies-kicker">{s.number} / {s.type}</p><h2 id={`${s.id}-title`}>{s.title}</h2></div><p>{s.description}</p></div>
+      <div class="study-canvas">
+        {s.id === 'portfolio' && <div class="kos-grid study-portfolio" kos-cols="4">
+          <article class="study-project"><div class="study-art art-ink"><span>FORM / 01</span><div class="art-circle"></div></div><p>01 / Objects in space</p><h3>Form and silence</h3></article>
+          <article class="study-project"><div class="study-art art-arch"><span>STUDY / 02</span><div class="art-archway"></div></div><p>02 / Architecture</p><h3>Between walls</h3></article>
+          <article class="study-project"><div class="study-art art-sun"><span>FIELD / 03</span><div class="art-sun-disc"></div></div><p>03 / Art direction</p><h3>Quiet horizon</h3></article>
+          <article class="study-project"><div class="study-art art-line"><span>TYPE / 04</span><div class="art-line-mark">永</div></div><p>04 / Identity</p><h3>Traces of time</h3></article>
+        </div>}
+        {s.id === 'feature' && <div class="kos-grid study-feature" kos-cols="12">
+          <div kos-col-span="8" class="feature-visual"><div class="feature-moon"></div><span>STUDY / STILLNESS</span></div>
+          <article kos-col-span="4" class="feature-copy"><p class="studies-kicker">02 / JOURNAL</p><h3>Space to<br/>observe.</h3><p>A composition is not only what you place. It is also what you choose to leave open.</p><span class="feature-rule">DESIGN NOTES — 2026</span></article>
+        </div>}
+        {s.id === 'schedule' && <div class="kos-grid study-schedule" kos-cols="12">
+          <div kos-col-span="5" class="schedule-visual"><span>JAPAN / 2026</span><div class="schedule-orbit"></div><strong lang="ja">旅</strong><small>AN EXERCISE IN STRUCTURE</small></div>
+          <div kos-col-span="7" class="schedule-content"><div class="schedule-head"><span>UPCOMING / PROGRAM</span><span>03 EVENTS</span></div><h3>On the move.</h3><div class="schedule-row"><time>APR 18</time><span>Kyoto</span><small>EXHIBITION</small><b>↗</b></div><div class="schedule-row"><time>MAY 02</time><span>Osaka</span><small>STUDIO SESSION</small><b>↗</b></div><div class="schedule-row"><time>JUN 12</time><span>Tokyo</span><small>OPEN HOUSE</small><b>↗</b></div></div>
+        </div>}
+      </div>
+      <details class="study-source"><summary>View Kōshi structure <span>+</span></summary><pre><code>{snippets[s.id as keyof typeof snippets]}</code></pre><p>The markup above shows the structural grid. Composition-specific CSS controls the visual proportions, offsets, and responsive presentation. All examples load the project's actual <code>src/styles/koshi.css</code> through SiteLayout.</p></details>
+    </section>)}
+    <footer class="studies-end"><p>Structure by Kōshi. Art direction by you.</p><a href="/lab/">Explore Composition Lab ↗</a></footer>
+  </div>
+</SiteLayout>

@@ -4,5 +4,5 @@ import CompositionLab from '../../components/CompositionLab.vue';
 import '../../styles/lab.css';
 ---
 <SiteLayout title="Composition Lab" description="Explore generated editorial layouts with Kōshi's interactive Composition Lab.">
-  <CompositionLab client:load />
+  <div class="shell" style="padding-block: 1.5rem; border-bottom: 1px solid #d5d3cc;">\n    <a href="/lab/layouts/" style="display: inline-flex; gap: 1rem; align-items: center; font-size: .875rem; text-underline-offset: .35rem;">Explore three finished responsive layout studies <span aria-hidden="true">↗</span></a>\n  </div>\n  <CompositionLab client:load />
 </SiteLayout>
